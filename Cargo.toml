@@ -1,0 +1,9 @@
+[package]
+name = "xonotlite"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+color-print = "0.3.4"
+thiserror = "1.0.47"
+tokio = { version = "1.32.0", features = ["full"] }

@@ -6,6 +6,9 @@ pub enum TokenType {
     Semicolon,
     OpenParen,
     CloseParen,
+    Ident,
+    Let,
+    Eq,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

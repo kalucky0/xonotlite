@@ -1,9 +1,21 @@
 use crate::Token;
 
-pub struct NodeExpr {
-    pub int_literal: Token,
+#[derive(Debug)]
+pub enum NodeExpr {
+    IntLiteral(Token),
+    Ident(Token),
 }
 
-pub struct NodeExit {
-    pub expr: NodeExpr,
+#[derive(Debug)]
+pub enum NodeStmt {
+    Exit(NodeExpr),
+    Let {
+        ident: Token,
+        expr: NodeExpr,
+    },
+}
+
+#[derive(Debug)]
+pub struct NodeProg {
+    pub stmts: Vec<NodeStmt>,
 }

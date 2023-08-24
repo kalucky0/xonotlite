@@ -30,8 +30,12 @@ impl Tokenizer<'_> {
                 if buffer == "exit" {
                     tokens.push(token!(Exit));
                     buffer.clear();
+                } else if buffer == "let" {
+                    tokens.push(token!(Let));
+                    buffer.clear();
                 } else {
-                    return Err(Error::UnknownIdentifier(buffer));
+                    tokens.push(token!(Ident, buffer.clone()));
+                    buffer.clear();
                 }
             } else if c.is_numeric() {
                 buffer.push(c);
@@ -50,6 +54,8 @@ impl Tokenizer<'_> {
                 tokens.push(token!(OpenParen));
             } else if c == ')' {
                 tokens.push(token!(CloseParen));
+            } else if c == '=' {
+                tokens.push(token!(Eq));
             } else if c.is_whitespace() {
                 continue;
             }

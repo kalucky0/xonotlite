@@ -5,10 +5,18 @@ use thiserror::Error;
 pub enum Error {
     #[error("Unknown identifier: `{0}`")]
     UnknownIdentifier(String),
+    #[error("Unexpected token `{0:?}`")]
+    UnexpectedToken(TokenType),
     #[error("Unexpected token `{0:?}`. Expected `{1}`")]
-    UnexpectedToken(TokenType, &'static str),
+    UnexpectedTokenExpected(TokenType, &'static str),
     #[error("Expected `{0}`. Found none")]
-    UnexpectedTokenNone(&'static str),
+    ExpectedFoundNone(&'static str),
+    #[error("Unexpected node `{0}`")]
+    UnexpectedNode(&'static str),
+    #[error("Expected value for token `{0:?}`. Found none")]
+    ExpectedValue(TokenType),
+    #[error("Redeclaration of `{0}`")]
+    Redeclaration(String),
     #[error("No exit node found")]
     NoExitNode,
 }

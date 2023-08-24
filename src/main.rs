@@ -25,7 +25,7 @@ async fn main() {
         Err(e) => exit!(e),
     };
 
-    let mut generator = Generator::new(tree);
+    let generator = Generator::new(tree);
     let asm = match generator.generate() {
         Ok(asm) => asm,
         Err(e) => exit!(e),
